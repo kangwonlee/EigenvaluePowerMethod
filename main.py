@@ -1,5 +1,6 @@
 import numpy as np
 import numpy.linalg as nl
+import numpy.random as nr
 
 
 def power_method(matA:np.ndarray, vecX:np.ndarray=None, epsilon:float=1e-7, n_iter_max:int=100000):
@@ -22,3 +23,11 @@ def power_method(matA:np.ndarray, vecX:np.ndarray=None, epsilon:float=1e-7, n_it
 
 
     return lam, vecY, i
+
+
+def get_a_random_matrix(n:int=2) -> np.ndarray:
+  matA = nr.randint(1, 10, size=(n,n))
+  for p in range(n):
+      matA[p, p] = nr.randint(10, 20)
+  matA = (matA * matA.T) ** 0.5
+  return matA
