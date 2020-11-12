@@ -31,3 +31,23 @@ def get_a_random_matrix(n:int=2) -> np.ndarray:
       matA[p, p] = nr.randint(10, 20)
   matA = (matA * matA.T) ** 0.5
   return matA
+
+
+def main():
+  matA = get_a_random_matrix()
+
+  print(f"matA =\n{matA}")
+
+  lam, vecX, n = power_method(matA)
+
+  print(f'lam = {lam}')
+  print(f'vecX = {vecX}')
+  print(f'counter = {n}')
+
+  Ax = matA @ vecX
+  print(f"Ax = matA @ vecX {Ax}")
+  print(f"Ax/Ax.max() = {Ax / Ax.max()}")
+
+
+if "__main__" == __name__:
+  main()
